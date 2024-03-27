@@ -1,14 +1,19 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { handler } from "./api/auth/[...nextauth]/route";
 
-export default function Home() {
+export default async function Home() {
+  // const session = await getServerSession(handler);
+
+  // console.debug({ session });
   return (
     <main className={styles.main}>
       <form>
         <div>
-          <input></input>
+          {/* {JSON.stringify(session, null, 2)} */}
           <button onClick={() => signIn()}>sign in</button>
         </div>
       </form>
