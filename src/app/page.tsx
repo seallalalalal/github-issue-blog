@@ -1,20 +1,21 @@
 "use client";
-import Image from "next/image";
+import { Button } from "@nextui-org/react";
 import styles from "./page.module.css";
 import { signIn, useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { handler } from "./api/auth/[...nextauth]/route";
 
-export default async function Home() {
-  // const session = await getServerSession(handler);
-
-  // console.debug({ session });
+export default function Home() {
+  const session = useSession();
   return (
     <main className={styles.main}>
       <form>
         <div>
-          {/* {JSON.stringify(session, null, 2)} */}
-          <button onClick={() => signIn()}>sign in</button>
+          {JSON.stringify(session, null, 2)}
+          <Button
+            color="primary"
+            onClick={() => signIn()}
+          >
+            Sign In
+          </Button>
         </div>
       </form>
     </main>
