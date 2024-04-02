@@ -1,10 +1,13 @@
-import SessionProvider from "./components/SessionProvider";
+import SessionProvider from "./_components/SessionProvider";
 import { getServerSession } from "next-auth";
+import { NextUIProvider } from "./_components/NextUIProvider";
+import QueryProvider from "./_components/QueryProvider";
 import "./globals.css";
-import { NextUIProvider } from "./components/NextUIProvider";
+import { handler } from "./api/auth/[...nextauth]/route";
+import NavBar from "./_components/NavBar";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession();
+  const session = await getServerSession(handler);
   return (
     <html
       lang="en"
@@ -13,7 +16,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <main>
           <SessionProvider session={session}>
-            <NextUIProvider>{children}</NextUIProvider>
+            <QueryProvider>
+              <NextUIProvider>
+                {/* <NavBar /> */}
+                {children}
+              </NextUIProvider>
+            </QueryProvider>
           </SessionProvider>
         </main>
       </body>
