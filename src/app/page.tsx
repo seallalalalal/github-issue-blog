@@ -5,14 +5,16 @@ import { signIn, useSession } from "next-auth/react";
 
 export default function Home() {
   const session = useSession();
+
   return (
     <main className={styles.main}>
-      <form>
+      <form action={() => signIn()}>
         <div>
+          Home page
           {JSON.stringify(session, null, 2)}
           <Button
             color="primary"
-            onClick={() => signIn()}
+            type="submit"
           >
             Sign In
           </Button>
