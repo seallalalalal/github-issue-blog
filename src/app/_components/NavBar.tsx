@@ -12,54 +12,24 @@ export default async function NavBar() {
   const session = await getServerSession(handler);
   console.log({ serverSession: session });
   return (
-    <Navbar>
+    <Navbar className="sticky top-0">
       <NavbarBrand>
         <p className="font-bold text-inherit">Seal's Blog</p>
       </NavbarBrand>
-      <NavbarContent
-        className="hidden sm:flex gap-4"
-        justify="center"
-      >
-        <NavbarItem>
-          <Link
-            color="foreground"
-            href="#"
-          >
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link
-            href="#"
-            aria-current="page"
-          >
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link
-            color="foreground"
-            href="#"
-          >
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
+
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
         <NavbarItem>
           <form
             action={async () => {
               "use server";
+              if (session) {
+                redirect("api/auth/signout");
+              }
               redirect("/api/auth/signin");
             }}
           >
             <Button
-              //   as={Link}
               color="primary"
-              //   href="#"
               variant="flat"
               type="submit"
             >
