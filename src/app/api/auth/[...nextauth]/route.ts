@@ -7,7 +7,9 @@ export const handler: NextAuthOptions = NextAuth({
     Github({
       clientId: process.env.AUTH_GITHUB_ID ?? "",
       clientSecret: process.env.AUTH_GITHUB_SECRET ?? "",
-      authorization: { params: { scope: "user,repo:public_repo" } },
+      authorization: {
+        params: { scope: "issues user repo" },
+      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
