@@ -1,23 +1,21 @@
 // TODO:
-import { Octokit } from "octokit";
+import { REPO_NAME, REPO_OWNER } from "@/const/general";
+import { octokitCaller } from "@/service/Octokit";
 
 type Props = {
-  token: string;
-  page: number;
-  pageSize?: number;
+  title: string;
+  body: string;
 };
 
-export default async function createIssue({ token, page, pageSize = 5 }: Props) {
+export default async function createIssue({ title, body }: Props) {
   "use server";
-  const octokit = new Octokit({
-    auth: token,
-  });
+  const octokit = await octokitCaller();
 
-  const resp = await octokit.rest.issues.list({
-    owner: "seallalalalal",
-    repo: "github-issue",
-    page: page,
-    per_page: pageSize,
+  const resp = await octokit.rest.issues.create({
+    owner: REPO_OWNER,
+    repo: REPO_NAME,
+    title: title,
+    body: body,
   });
 
   return resp.data;

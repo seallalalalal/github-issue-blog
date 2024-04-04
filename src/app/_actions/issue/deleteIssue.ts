@@ -1,23 +1,20 @@
-// TODO:
+import { REPO_NAME, REPO_OWNER } from "@/const/general";
+import { octokitCaller } from "@/service/Octokit";
 import { Octokit } from "octokit";
 
 type Props = {
-  token: string;
-  page: number;
-  pageSize?: number;
+  issue_number: number;
 };
 
-export default async function deleteIssue({ token, page, pageSize = 5 }: Props) {
+export default async function deleteIssue({ issue_number }: Props) {
   "use server";
-  const octokit = new Octokit({
-    auth: token,
-  });
+  const octokit = await octokitCaller();
 
-  const resp = await octokit.rest.issues.list({
-    owner: "seallalalalal",
-    repo: "github-issue",
-    page: page,
-    per_page: pageSize,
+  const resp = await octokit.rest.issues.update({
+    owner: REPO_OWNER,
+    repo: REPO_NAME,
+    state: "closed",
+    issue_number,
   });
 
   return resp.data;
