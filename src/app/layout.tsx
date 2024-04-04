@@ -18,7 +18,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <SessionProvider session={session}>
             <QueryProvider>
               <NextUIProvider>
-                {/* <NavBar /> */}
+                <NavBar />
                 {children}
               </NextUIProvider>
             </QueryProvider>
