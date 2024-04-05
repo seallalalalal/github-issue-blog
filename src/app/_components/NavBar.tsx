@@ -2,12 +2,21 @@ import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 import { getServerSession } from "next-auth";
 import { handler } from "../api/auth/[...nextauth]/route";
+import { FaHouse } from "react-icons/fa6";
 
 export default async function NavBar() {
   const session = await getServerSession(handler);
   return (
-    <Navbar className="sticky top-0">
+    <Navbar>
       <NavbarBrand>
+        <Button
+          isIconOnly
+          variant="light"
+          as={Link}
+          href="/list"
+        >
+          <FaHouse />
+        </Button>
         <p className="font-bold text-inherit">Seal's Blog</p>
       </NavbarBrand>
 
