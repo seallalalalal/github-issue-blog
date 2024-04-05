@@ -1,6 +1,5 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import Github from "next-auth/providers/github";
-import { use } from "react";
 
 export const handler: NextAuthOptions = NextAuth({
   providers: [

@@ -1,16 +1,10 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
-import { signIn, useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
-// import { handler } from "../api/auth/[...nextauth]/route";
-
-import { redirect } from "next/navigation";
 import { handler } from "../api/auth/[...nextauth]/route";
 
 export default async function NavBar() {
-  //   const session = useSession();
   const session = await getServerSession(handler);
-  console.log({ serverSession: session });
   return (
     <Navbar className="sticky top-0">
       <NavbarBrand>
@@ -19,23 +13,21 @@ export default async function NavBar() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <form
-            action={async () => {
-              "use server";
-              if (session) {
-                redirect("api/auth/signout");
-              }
-              redirect("/api/auth/signin");
-            }}
-          >
+          {session ? (
             <Button
               color="primary"
               variant="flat"
-              type="submit"
             >
-              {session ? "Sign Out" : "Sign In"}
+              <Link href="/api/auth/signout">Sign Out</Link>
             </Button>
-          </form>
+          ) : (
+            <Button
+              color="primary"
+              variant="flat"
+            >
+              <Link href="/api/auth/signin">Sign In</Link>
+            </Button>
+          )}
         </NavbarItem>
       </NavbarContent>
     </Navbar>
