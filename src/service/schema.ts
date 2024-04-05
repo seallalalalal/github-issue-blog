@@ -10,13 +10,21 @@ export const User = z.object({
 });
 
 export const Label = z.object({
-  id: z.number(),
-  node_id: z.string(),
-  url: z.string(),
-  name: z.string(),
-  color: z.string().transform((val) => `#${val}`),
-  default: z.boolean(),
-  description: z.string(),
+  id: z.number().optional(),
+  node_id: z.string().optional(),
+  url: z.string().optional(),
+  name: z.string().optional(),
+  color: z
+    .string()
+    .optional()
+    .nullable()
+    .transform((val) => (val ? `#${val}` : undefined)),
+  default: z.boolean().optional(),
+  description: z
+    .string()
+    .optional()
+    .nullable()
+    .transform((val) => val ?? undefined),
 });
 export const Issue = z.object({
   url: z.string(),
