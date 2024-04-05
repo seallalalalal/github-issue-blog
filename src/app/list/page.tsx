@@ -1,6 +1,5 @@
 import getIssueList from "../_actions/issue/getIssueList";
 import { Button, Input, Link } from "@nextui-org/react";
-import CreateButton from "../_components/CreateButton";
 import List from "../_components/List";
 import { FaPlus } from "react-icons/fa6";
 
