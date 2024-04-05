@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   <NavBar />
                   <div className="flex flex-1 flex-col overflow-hidden">
                     <div className="ap-6 auto grid min-h-full grid-cols-6 grid-rows-1 bg-white">
-                      <div className="col-span-6 py-3 md:col-span-4 md:col-start-2">{children}</div>
+                      {children}
                     </div>
                   </div>
                 </div>
