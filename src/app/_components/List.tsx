@@ -15,6 +15,7 @@ function transformData(issue: IssueModel) {
     labels: issue.labels,
     githubLink: issue.html_url,
     comments: issue.comments,
+    issueNumber: issue.number,
   };
 }
 export default function List({ data }: Props) {
