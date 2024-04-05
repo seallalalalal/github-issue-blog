@@ -8,16 +8,12 @@ export default async function Page() {
 
   return (
     <>
-      <div className="grid grid-cols-6 items-center justify-center gap-6 bg-white py-6">
-        <div className="col-span-6 md:col-span-4 md:col-start-2">
-          <div className="mb-3 flex flex-col gap-1 md:flex-row">
-            <Input />
-            <Button>Search</Button>
-            <CreateButton color="primary">New</CreateButton>
-          </div>
-          <List data={data} />
-        </div>
+      <div className="mb-3 flex flex-col gap-1 md:flex-row">
+        <Input />
+        <Button>Search</Button>
+        <CreateButton color="primary">New</CreateButton>
       </div>
+      <List data={data} />
     </>
   );
 }
