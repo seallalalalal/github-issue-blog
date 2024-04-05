@@ -7,15 +7,16 @@ type Props = {
   pageSize?: number;
 };
 
-export default async function getIssueList({ page, pageSize = 5 }: Props) {
+export default async function getIssueList({ page, pageSize = 10 }: Props) {
   "use server";
   const octokit = await octokitCaller();
 
   const resp = await octokit.rest.issues.listForRepo({
     owner: REPO_OWNER,
     repo: REPO_NAME,
+    page,
+    per_page: pageSize,
   });
-  console.log({ respData: resp.data[0].labels });
 
   return issueList.parse(resp).data;
 

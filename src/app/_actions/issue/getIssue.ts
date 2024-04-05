@@ -1,5 +1,6 @@
 import { REPO_NAME, REPO_OWNER } from "@/const/general";
 import { octokitCaller } from "@/service/Octokit";
+import { Issue } from "@/service/schema";
 
 type Props = {
   issue_number: number;
@@ -15,5 +16,5 @@ export default async function getIssue({ issue_number }: Props) {
     issue_number,
   });
 
-  return resp.data;
+  return Issue.parse(resp.data);
 }
