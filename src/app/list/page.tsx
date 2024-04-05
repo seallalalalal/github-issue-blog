@@ -8,7 +8,7 @@ export default async function Page() {
   const data = await getIssueList({ page: 1 });
 
   return (
-    <div className="h-full overflow-y-scroll px-1">
+    <div className="h-full overflow-y-scroll px-1 pb-1">
       <div className="sticky top-0 z-10 mb-3 flex flex-col gap-1 md:flex-row">
         <Input />
         <Button>Search</Button>
