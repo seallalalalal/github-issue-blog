@@ -12,7 +12,7 @@ export const handler: NextAuthOptions = NextAuth({
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  // secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async session({ session, token, user }) {
       session.accessToken = token.accessToken;
