@@ -8,10 +8,11 @@ import { useRouter } from "next/navigation";
 type Props = {
   title: string;
   body: string;
+  token: string;
 };
 
-async function createIssue({ title, body }: Props) {
-  const octokit = await octokitCaller();
+async function createIssue({ title, body, token }: Props) {
+  const octokit = new Octokit({ auth: token });
 
   const resp = await octokit.rest.issues.create({
     owner: REPO_OWNER,
