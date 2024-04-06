@@ -3,9 +3,10 @@ import { Avatar, Button, Divider, Link } from "@nextui-org/react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { FaPenToSquare, FaRegTrashCan, FaGithub } from "react-icons/fa6";
+import { FaPenToSquare, FaRegTrashCan, FaGithub, FaFileCirclePlus } from "react-icons/fa6";
 import { redirect } from "next/navigation";
 import Label from "@/app/_components/Label";
+import deleteIssue from "@/app/_actions/issue/deleteIssue";
 
 export default async function Page({ params }: { params: { issue_number: number } }) {
   const { title, body, user, html_url, number, labels, updated_at, created_at, ...issue } =
@@ -22,6 +23,7 @@ export default async function Page({ params }: { params: { issue_number: number 
           </div>
 
           <div className="flex flex-row">
+            {/* Github */}
             <Button
               isIconOnly
               variant="light"
@@ -32,7 +34,7 @@ export default async function Page({ params }: { params: { issue_number: number 
             >
               <FaGithub />
             </Button>
-
+            {/* Edit */}
             <Button
               isIconOnly
               variant="light"
@@ -43,16 +45,36 @@ export default async function Page({ params }: { params: { issue_number: number 
             >
               <FaPenToSquare />
             </Button>
+            {/* ADD */}
             <Button
               isIconOnly
               variant="light"
-              color="danger"
               size="sm"
               radius="full"
+              as={Link}
+              href={`/list/create`}
             >
-              <FaRegTrashCan />
-              {/* Edit */}
+              <FaFileCirclePlus />
             </Button>
+            {/* Delete */}
+            <form
+              action={async () => {
+                "use server";
+                console.log("delete");
+                await deleteIssue({ issue_number: number });
+              }}
+            >
+              <Button
+                isIconOnly
+                variant="light"
+                color="danger"
+                size="sm"
+                radius="full"
+                type="submit"
+              >
+                <FaRegTrashCan />
+              </Button>
+            </form>
           </div>
         </div>
         <div className="flex flex-row flex-wrap gap-1 italic text-slate-400">
@@ -68,7 +90,7 @@ export default async function Page({ params }: { params: { issue_number: number 
         <div className="flex max-w-fit flex-row items-center gap-2 rounded-full border-slate-300 p-2 shadow-lg ">
           <Avatar
             src={user?.avatar_url}
-            name={user.login}
+            name={user.login ?? "Author Name"}
           />
           <div className="flex flex-col ">
             <div className="text-md font-500">{user?.login}</div>
