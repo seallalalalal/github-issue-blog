@@ -50,7 +50,10 @@ export const Issue = z.object({
     .nullable()
     .transform((val) => (val ? dayjs(val) : null)),
   author_association: z.string(),
-  body: z.string().nullable(),
+  body: z
+    .string()
+    .nullable()
+    .transform((val) => val ?? undefined),
   timeline_url: z.string(),
 });
 

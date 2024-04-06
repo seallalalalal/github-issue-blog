@@ -1,6 +1,7 @@
 "use client";
 import useIssueMutateCreate from "@/service/issue/useIssueMutateCreate";
 import { Button, Input, Tab, Tabs, Textarea } from "@nextui-org/react";
+import { UseMutateFunction, UseMutationResult } from "@tanstack/react-query";
 import React, { ChangeEventHandler, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm"; // Import GitHub-flavored Markdown plugin
@@ -21,10 +22,18 @@ type FromValidStatusType = {
 type Props = {
   title?: string;
   body?: string;
+  onMutate: (values: FormDataType) => void;
+  isMutating: boolean;
+  btnText?: string;
 };
 
-export default function MarkdownEditor({ title = "", body = "" }: Props) {
-  const { mutate, isPending } = useIssueMutateCreate();
+export default function MarkdownEditor({
+  title = "",
+  body = "",
+  onMutate,
+  isMutating,
+  btnText,
+}: Props) {
   const [formData, setFormData] = useState<FormDataType>({ title, body });
   const [InvalidStatus, setInvalidStatus] = useState<FromValidStatusType>({
     title: false,
@@ -121,7 +130,7 @@ export default function MarkdownEditor({ title = "", body = "" }: Props) {
                 "h-full overflow-y-scroll rounded-medium border-1 border-solid border-slate-300 px-3"
               }
             >
-              <div className="prose prose-sm md:prose-lg lg:prose-xl h-full w-full">
+              <div className="prose prose-sm h-full w-full md:prose-lg lg:prose-xl">
                 {formData.body === "" ? (
                   <div className="text-slate-300">No Content Yet</div>
                 ) : (
@@ -133,15 +142,15 @@ export default function MarkdownEditor({ title = "", body = "" }: Props) {
         </Tab>
       </Tabs>
       <Button
-        isLoading={isPending}
+        isLoading={isMutating}
         color="primary"
         onClick={() => {
           if (validateForm()) {
-            mutate({ ...formData });
+            onMutate(formData);
           }
         }}
       >
-        Create
+        {btnText}
       </Button>
     </div>
   );
