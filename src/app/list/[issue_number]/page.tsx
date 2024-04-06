@@ -13,23 +13,6 @@ export default async function Page({ params }: { params: { issue_number: number 
       issue_number: params.issue_number,
     });
 
-  const testMD = `# tesr`;
-
-  const markdownContent = `# Hello, World!
-
-This is some **bold** text and a [link](https://example.com).
-
-- List item 1
-- List item 2
-
-\`\`\`javascript
-// Code block
-function greet(name) {
-  return 'Hello, ' + name + '!';
-}
-\`\`\`
-`;
-
   return (
     <>
       <div className="p-4 md:p-0">
@@ -39,27 +22,24 @@ function greet(name) {
           </div>
 
           <div className="flex flex-row">
-            <form
-              action={async () => {
-                "use server";
-                redirect(html_url);
-              }}
-            >
-              <Button
-                isIconOnly
-                variant="light"
-                size="sm"
-                radius="full"
-                type="submit"
-              >
-                <FaGithub />
-              </Button>
-            </form>
             <Button
               isIconOnly
               variant="light"
               size="sm"
               radius="full"
+              as={Link}
+              href={html_url}
+            >
+              <FaGithub />
+            </Button>
+
+            <Button
+              isIconOnly
+              variant="light"
+              size="sm"
+              radius="full"
+              as={Link}
+              href={`/list/${number}/edit`}
             >
               <FaPenToSquare />
             </Button>
