@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { issue_number: number 
     });
 
   return (
-    <>
+    <div className="h-full w-full overflow-auto">
       <div className="p-4 md:p-0">
         <div className="items-centers flex flex-row flex-wrap items-center justify-between pb-2">
           <div className="flex flex-row items-center gap-1">
@@ -110,6 +110,6 @@ export default async function Page({ params }: { params: { issue_number: number 
       <div className="prose prose-sm md:prose-lg lg:prose-xl">
         <Markdown remarkPlugins={[remarkGfm]}>{body}</Markdown>
       </div>
-    </>
+    </div>
   );
 }
