@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Avatar, Link } from "@nextui-org/react";
+import { Card, CardBody, Image, Avatar, Link, Button } from "@nextui-org/react";
 import { FaRegComments, FaGithub } from "react-icons/fa6";
 import DefaultImage from "@/assets/images/album-cover.png";
 import Label from "./Label";
@@ -85,14 +85,15 @@ export default function ListTile({
                 </div>
               </div>
               <div className="flex h-full min-w-40 flex-col items-end justify-between">
-                <Link
-                  isBlock
+                <Button
                   href={githubLink}
-                  color="foreground"
-                  className=""
+                  isIconOnly
+                  variant="light"
+                  as={Link}
                 >
                   <FaGithub />
-                </Link>
+                  {`#${issueNumber}`}
+                </Button>
                 <div>
                   <p className="text-small text-foreground/80">
                     發佈於 {timeStamp.createdAt.format("YYYY-M-D hh:mm")}
