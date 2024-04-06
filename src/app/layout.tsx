@@ -6,6 +6,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { handler } from "./api/auth/[...nextauth]/route";
 import NavBar from "./_components/NavBar";
+import { ModalProvider } from "./_components/Modal";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(handler);
@@ -19,14 +20,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <SessionProvider session={session}>
             <QueryProvider>
               <NextUIProvider>
-                <div className="p-y-2 flex h-dvh flex-1 flex-col">
-                  <NavBar />
-                  <div className="flex flex-1 flex-col overflow-hidden">
-                    <div className="ap-6 auto grid min-h-full grid-cols-6 grid-rows-1 bg-white">
-                      <div className="col-span-6 py-3 md:col-span-4 md:col-start-2">{children}</div>
+                <ModalProvider>
+                  <div className="p-y-2 flex h-dvh flex-1 flex-col">
+                    <NavBar />
+                    <div className="flex flex-1 flex-col overflow-hidden">
+                      <div className="ap-6 auto grid min-h-full grid-cols-6 grid-rows-1 bg-white">
+                        <div className="col-span-6 py-3 md:col-span-4 md:col-start-2">
+                          {children}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ModalProvider>
               </NextUIProvider>
             </QueryProvider>
           </SessionProvider>
