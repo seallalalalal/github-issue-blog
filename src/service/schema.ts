@@ -46,7 +46,7 @@ export const Issue = z.object({
   created_at: z.string().transform((val) => dayjs(val)),
   updated_at: z.string().transform((val) => dayjs(val)),
   closed_at: z
-    .date()
+    .string()
     .nullable()
     .transform((val) => (val ? dayjs(val) : null)),
   author_association: z.string(),

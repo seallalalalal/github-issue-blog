@@ -10,12 +10,18 @@ export default async function deleteIssue({ issue_number }: Props) {
   "use server";
   const octokit = await octokitCaller();
 
-  const resp = await octokit.rest.issues.update({
-    owner: REPO_OWNER,
-    repo: REPO_NAME,
-    state: "closed",
-    issue_number,
-  });
+  console.log({ issue_number });
 
-  return resp.data;
+  try {
+    const resp = await octokit.rest.issues.update({
+      owner: REPO_OWNER,
+      repo: REPO_NAME,
+      state: "closed",
+      issue_number,
+    });
+
+    return resp.data;
+  } catch (error) {
+    console.error({ error });
+  }
 }

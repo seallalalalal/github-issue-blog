@@ -18,9 +18,14 @@ type FromValidStatusType = {
   body: boolean;
 };
 
-export default function MarkdownEditor() {
+type Props = {
+  title?: string;
+  body?: string;
+};
+
+export default function MarkdownEditor({ title = "", body = "" }: Props) {
   const { mutate, isPending } = useIssueMutateCreate();
-  const [formData, setFormData] = useState<FormDataType>({ title: "", body: "" });
+  const [formData, setFormData] = useState<FormDataType>({ title, body });
   const [InvalidStatus, setInvalidStatus] = useState<FromValidStatusType>({
     title: false,
     body: false,
