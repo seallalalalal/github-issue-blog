@@ -7,6 +7,7 @@ import { FaPenToSquare, FaRegTrashCan, FaGithub, FaFileCirclePlus } from "react-
 import { redirect } from "next/navigation";
 import Label from "@/app/_components/Label";
 import deleteIssue from "@/app/_actions/issue/deleteIssue";
+import DeleteButton from "@/app/_components/DeleteButton";
 
 export default async function Page({ params }: { params: { issue_number: number } }) {
   const { title, body, user, html_url, number, labels, updated_at, created_at, ...issue } =
@@ -57,7 +58,8 @@ export default async function Page({ params }: { params: { issue_number: number 
               <FaFileCirclePlus />
             </Button>
             {/* Delete */}
-            <form
+            <DeleteButton number={number} />
+            {/* <form
               action={async () => {
                 "use server";
                 console.log("delete");
@@ -74,7 +76,7 @@ export default async function Page({ params }: { params: { issue_number: number 
               >
                 <FaRegTrashCan />
               </Button>
-            </form>
+            </form> */}
           </div>
         </div>
         <div className="flex flex-row flex-wrap gap-1 italic text-slate-400">
