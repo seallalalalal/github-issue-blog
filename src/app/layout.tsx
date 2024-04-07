@@ -17,7 +17,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     >
       <body className="h-dvh">
         <main>
-          <SessionProvider session={session}>
+          <SessionProvider
+            session={session}
+            refetchInterval={60 * 60}
+          >
             <QueryProvider>
               <NextUIProvider>
                 <ModalProvider>

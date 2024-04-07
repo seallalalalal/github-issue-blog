@@ -5,7 +5,7 @@ import { BASE_URL } from "@/const/general";
 export const octokitCaller = async () => {
   const token = await fetch(`${BASE_URL}/api/proxy`, {
     method: "PATCH",
-    // headers: headers(),
+    headers: headers(),
   });
   const { accessToken } = await token.json();
   const octokit = new Octokit({

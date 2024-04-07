@@ -1,4 +1,3 @@
-// TODO:
 import { REPO_NAME, REPO_OWNER } from "@/const/general";
 import { octokitCaller } from "@/service/Octokit";
 
