@@ -1,10 +1,10 @@
 "use client";
 import { REPO_NAME, REPO_OWNER } from "@/const/general";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { octokitCaller } from "../Octokit";
 
 import parse from "parse-link-header";
-import { IssueArray, issueList, IssueModel } from "../schema";
+import { IssueArray } from "../schema";
+import { Octokit } from "octokit";
 
 type Props = {
   page: number;
@@ -14,7 +14,7 @@ type Props = {
 type MetaType = { first: parse.Link | null; next: parse.Link | null; last: parse.Link | null };
 
 async function getIssueList({ page, pageSize = 10 }: Props & {}) {
-  const octokit = await octokitCaller();
+  const octokit = new Octokit();
 
   const resp = await octokit.request("GET /repos/{owner}/{repo}/issues", {
     owner: REPO_OWNER,
