@@ -1,6 +1,6 @@
 "use client";
 
-import useIssueMutateDelete from "@/service/issue/useIssuemutateDelete";
+import useIssueMutateDelete from "@/app/_hooks/query/useIssuemutateDelete";
 import { Button } from "@nextui-org/react";
 import { useModal } from "../_hooks/context/Modal";
 import { useSession } from "next-auth/react";

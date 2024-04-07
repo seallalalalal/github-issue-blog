@@ -1,6 +1,6 @@
 "use client";
 import MarkdownEditor from "@/app/_components/MarkDownEditor";
-import useIssueMutateCreate from "@/service/issue/useIssueMutateCreate";
+import useIssueMutateCreate from "@/app/_hooks/query/useIssueMutateCreate";
 import { useSession } from "next-auth/react";
 
 export default function Page() {

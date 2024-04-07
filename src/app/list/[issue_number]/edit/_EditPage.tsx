@@ -1,7 +1,7 @@
 "use client";
 
 import MarkdownEditor from "@/app/_components/MarkDownEditor";
-import useIssueMutateUpdate from "@/service/issue/useIssueMutateUpdate";
+import useIssueMutateUpdate from "@/app/_hooks/query/useIssueMutateUpdate";
 import { useSession } from "next-auth/react";
 
 type Props = { body?: string; title: string; number: number };
