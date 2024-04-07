@@ -1,46 +1,36 @@
-import { Card, CardBody, Image, Avatar, Link, Button } from "@nextui-org/react";
+import { Card, CardBody, Image, Avatar, Link, Button, User } from "@nextui-org/react";
 import { FaRegComments, FaGithub } from "react-icons/fa6";
 import DefaultImage from "@/assets/images/album-cover.png";
 import Label from "./Label";
-import { LabelModel } from "@/service/schema";
-import { Dayjs } from "dayjs";
-import { redirect } from "next/navigation";
+import { IssueModel } from "@/service/schema";
+import { useRouter } from "next/navigation";
 
 type Props = {
-  issueNumber: number;
-  author: {
-    avatar: string;
-    name: string;
-    link: string;
-  };
-  title: string;
-  timeStamp: {
-    createdAt: Dayjs;
-    updatedAt: Dayjs;
-  };
-  labels: LabelModel[];
-  githubLink: string;
-  comments: number;
-  body?: string;
+  issue: IssueModel;
 };
 
-export default function ListTile({
-  issueNumber,
-  author,
-  title,
-  comments,
-  githubLink,
-  labels,
-  timeStamp,
-  body,
-}: Props) {
+export default function ListTile({ issue }: Props) {
+  const {
+    number: issueNumber,
+    user,
+    title,
+    body,
+    html_url,
+    labels,
+    created_at: createdAt,
+    updated_at: updatedAt,
+    comments,
+    ...rest
+  } = issue;
+  const router = useRouter();
+
   return (
     <Card
       isBlurred
       className="w-full border-none bg-background/60 dark:bg-default-100/50"
       shadow="sm"
-      as={Link}
-      href={`/list/${issueNumber}`}
+      isPressable
+      onPress={() => router.push(`/list/${issueNumber}`)}
     >
       <CardBody>
         <div className="grid w-full grid-cols-6 justify-center gap-6 md:grid-cols-12 md:gap-4">
@@ -58,16 +48,16 @@ export default function ListTile({
           <div className="col-span-6 flex flex-col md:col-span-10">
             <div className="flex items-start justify-between">
               <div className="flex max-w-full flex-col gap-0">
-                <Link
-                  className="flex flex-row gap-1 text-black"
-                  href={author.link}
-                >
-                  <Avatar
-                    src={author.avatar}
-                    className="h-6 w-6 text-tiny"
-                  />
-                  <div>{author.name}</div>
-                </Link>
+                <User
+                  className="flex flex-row justify-start"
+                  name={user.login ?? "Author Name"}
+                  description={<Link href={user.html_url}>Github Profile</Link>}
+                  avatarProps={{
+                    showFallback: true,
+                    src: user.avatar_url,
+                    size: "sm",
+                  }}
+                />
                 <h5 className="mt-2 text-3xl font-medium">{title}</h5>
                 <p className="max-w-64 overflow-hidden truncate text-ellipsis italic text-slate-600">
                   {body}
@@ -86,7 +76,7 @@ export default function ListTile({
               </div>
               <div className="flex h-full min-w-40 flex-col items-end justify-between">
                 <Button
-                  href={githubLink}
+                  href={html_url}
                   isIconOnly
                   variant="light"
                   as={Link}
@@ -96,10 +86,10 @@ export default function ListTile({
                 </Button>
                 <div>
                   <p className="text-small text-foreground/80">
-                    發佈於 {timeStamp.createdAt.format("YYYY-M-D hh:mm")}
+                    發佈於 {createdAt.format("YYYY-M-D hh:mm")}
                   </p>
                   <p className="text-small text-foreground/80">
-                    更新於 {timeStamp.updatedAt.format("YYYY-M-D hh:mm")}
+                    更新於 {updatedAt.format("YYYY-M-D hh:mm")}
                   </p>
                 </div>
               </div>
