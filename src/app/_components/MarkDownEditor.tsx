@@ -1,9 +1,7 @@
 "use client";
-import useIssueMutateCreate from "@/service/issue/useIssueMutateCreate";
-import { Button, Input, Tab, Tabs, Textarea } from "@nextui-org/react";
-import { UseMutateFunction, UseMutationResult } from "@tanstack/react-query";
+import { Button, Input, Tab, Tabs } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
-import React, { ChangeEventHandler, useState } from "react";
+import React, { useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm"; // Import GitHub-flavored Markdown plugin
 import { useModal } from "./Modal";

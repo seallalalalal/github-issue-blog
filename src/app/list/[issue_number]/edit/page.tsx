@@ -1,5 +1,4 @@
 import getIssue from "@/app/_actions/issue/getIssue";
-import MarkdownEditor from "@/app/_components/MarkDownEditor";
 import EditPage from "./_EditPage";
 
 export default async function Page({ params }: { params: { issue_number: number } }) {

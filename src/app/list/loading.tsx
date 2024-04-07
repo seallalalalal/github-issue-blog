@@ -1,5 +1,3 @@
-import { Card, Skeleton } from "@nextui-org/react";
-
 export default function Loading() {
   return (
     <>

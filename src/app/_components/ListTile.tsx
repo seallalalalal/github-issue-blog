@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Avatar, Link, Button, User } from "@nextui-org/react";
+import { Card, CardBody, Image, Link, Button, User } from "@nextui-org/react";
 import { FaRegComments, FaGithub } from "react-icons/fa6";
 import DefaultImage from "@/assets/images/album-cover.png";
 import Label from "./Label";

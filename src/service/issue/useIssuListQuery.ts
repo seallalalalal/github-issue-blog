@@ -27,7 +27,6 @@ async function getIssueList({ page, pageSize = 10 }: Props & {}) {
 
   const meta: MetaType = { first: null, next: null, last: null };
 
-  console.log({ link });
   if (link?.last) {
     meta.last = link.last;
   }

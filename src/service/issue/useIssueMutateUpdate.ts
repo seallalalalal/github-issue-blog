@@ -1,8 +1,7 @@
 "use client";
 import { REPO_NAME, REPO_OWNER } from "@/const/general";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { Octokit } from "octokit";
-import { octokitCaller } from "../Octokit";
 import { useRouter } from "next/navigation";
 
 type Props = {
