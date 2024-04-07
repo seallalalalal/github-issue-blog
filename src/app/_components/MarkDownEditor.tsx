@@ -47,7 +47,6 @@ export default function MarkdownEditor({
   const accessToken = session.data?.accessToken;
 
   function validateForm() {
-    console.log("validate", { formData });
     if (formData.title === "") {
       setInvalidStatus((prev) => ({ ...prev, title: true }));
       return false;

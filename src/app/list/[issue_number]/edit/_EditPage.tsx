@@ -12,7 +12,6 @@ export default function EditPage({ number, ...props }: Props) {
     <MarkdownEditor
       {...props}
       onMutate={(values) => {
-        console.log({ values, number, token });
         mutate({ ...values, number, token });
       }}
       isMutating={isPending}
