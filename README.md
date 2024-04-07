@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Demo on Vercel
+
+[https://github-issue-blog-blond.vercel.app/](https://github-issue-blog-blond.vercel.app/)
 
 ## Getting Started
+
+Node.js version: v.18.14.2
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the
+result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 功能列表
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 基本功能
 
-## Learn More
+- [x] GitHub Login
+  - [x] 在登入時需要求正確的 scope
+- [x] API
+  - [x] crete
+  - [x] update
+  - [x] delete
+  - [x] get
+  - [x] getList
+- [x] UI
+  - [x] list page
+    - [x] infinite load
+    - [x] ui
+  - [x] post page
+    - [x] 正確 render出markdown內容
+    - [x] edit page
+    - [x] create page
+    - [x] 至少需要使用 title 和 body 兩個欄位
+    - [x] 表單驗證:title 為必填,body 至少需要 30 字
 
-To learn more about Next.js, take a look at the following resources:
+## 主要使用到的套件
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- UI相關
+  - next-ui: ui library
+  - tailwind css
+  - react-markdown
+- api相關
+  - next auth: oauth 驗證
+  - octokit
+  - react query
+  - zod: 型別檢查
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 許願池
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [ ] 全部 用 server component
+- [ ] 更好的rwd
+- [ ] 希望markdown要可以上傳圖片
+- [ ] skeleton想要可以對應上頁面
+- [ ] 希望要可以sort跟filter，sort跟filter想要可以放在網址列上
+- [ ] 想要有評論系統
+- [ ] 更多的error handling
+  - [ ] 404
+  - [ ] 401
+  - [ ] Request quota exhausted!!!!
+- [ ] 換掉 next auth
