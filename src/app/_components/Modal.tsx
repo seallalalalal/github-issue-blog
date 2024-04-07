@@ -18,9 +18,9 @@ type ModalContentType = {
 
 type ModalStateType = {
   open: boolean;
-  title: ReactNode;
-  content: ReactNode;
-  footer?: (onClose: () => void, e: PressEvent) => ReactNode;
+  title?: ReactNode;
+  content?: ReactNode;
+  footer?: (onClose: () => void) => ReactNode;
   onOk?: (onClose: () => void, e: PressEvent) => void;
   onCacel?: (onClose: () => void, e: PressEvent) => void;
 };
@@ -55,29 +55,40 @@ export function ModalProvider({ children }: PropsWithChildren) {
         onOpenChange={() => setModalProps((prev) => ({ ...prev, open: false }))}
       >
         <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">{modalProps.title}</ModalHeader>
-              <ModalBody>{modalProps.content}</ModalBody>
-              <ModalFooter>
-                <>
-                  <Button
-                    color="danger"
-                    variant="light"
-                    onPress={(e) => modalProps.onCacel?.(onClose, e)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    color="primary"
-                    onPress={(e) => modalProps.onOk?.(onClose, e)}
-                  >
-                    Confirm
-                  </Button>
-                </>
-              </ModalFooter>
-            </>
-          )}
+          {(onClose) => {
+            const renderFooter = modalProps.footer?.(onClose);
+            return (
+              <>
+                <ModalHeader className="flex flex-col gap-1">{modalProps.title}</ModalHeader>
+                <ModalBody>{modalProps.content}</ModalBody>
+                <ModalFooter>
+                  <>
+                    {renderFooter ? (
+                      renderFooter
+                    ) : (
+                      <>
+                        <Button
+                          color="danger"
+                          variant="light"
+                          onPress={(e) => modalProps.onCacel?.(onClose, e)}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          color="primary"
+                          onPress={(e) => {
+                            modalProps.onOk?.(onClose, e);
+                          }}
+                        >
+                          Confirm
+                        </Button>
+                      </>
+                    )}
+                  </>
+                </ModalFooter>
+              </>
+            );
+          }}
         </ModalContent>
       </NextModal>
     </ModalContext.Provider>

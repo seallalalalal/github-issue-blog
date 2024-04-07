@@ -1,7 +1,7 @@
 "use client";
 import { REPO_NAME, REPO_OWNER } from "@/const/general";
-import { useMutation } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { Octokit } from "octokit";
 
 type Props = {
@@ -22,20 +22,15 @@ async function closeIssue({ issue_number, token }: Props) {
 }
 
 export default function useIssueMutateDelete() {
-  // const moda = useMo
-  //   const router = useRouter();
-  const session = useSession();
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const query = useMutation({
     mutationKey: ["deleteIssue"],
     mutationFn: closeIssue,
     onSuccess(data, variables, context) {
-      //   router.push(`/list`);
       console.log("success");
-      //   modal.set({
-      //     open: true,
-      //     title: "Deletion Success",
-      //     content: "This issue is successfully closed.",
-      //   });
+      queryClient.refetchQueries({ queryKey: ["getIsseuList"], type: "active" });
+      router.push("/list");
     },
   });
   console.error(query.error);
