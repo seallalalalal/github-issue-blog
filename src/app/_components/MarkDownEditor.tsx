@@ -144,7 +144,7 @@ export default function MarkdownEditor({
       <Button
         isLoading={isMutating}
         color="primary"
-        onClick={() => {
+        onPress={() => {
           if (validateForm()) {
             onMutate(formData);
           }

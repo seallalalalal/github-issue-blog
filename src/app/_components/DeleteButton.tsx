@@ -31,7 +31,7 @@ export default function DeleteButton({ number }: Props) {
           footer: (onClose) => (
             <div className="flex flex-row gap-2">
               <Button
-                onClick={onClose}
+                onPress={onClose}
                 variant="ghost"
               >
                 Cancel
@@ -39,7 +39,7 @@ export default function DeleteButton({ number }: Props) {
               <Button
                 isLoading={isPending}
                 color="danger"
-                onClick={() => {
+                onPress={() => {
                   if (accessToken) {
                     mutate({ token: accessToken, issue_number: number });
                     modal.set({ open: false });
