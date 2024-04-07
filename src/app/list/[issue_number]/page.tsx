@@ -1,12 +1,9 @@
 import getIssue from "@/app/_actions/issue/getIssue";
 import { Avatar, Button, Divider, Link } from "@nextui-org/react";
 import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { FaPenToSquare, FaRegTrashCan, FaGithub, FaFileCirclePlus } from "react-icons/fa6";
-import { redirect } from "next/navigation";
+import { FaPenToSquare, FaGithub, FaFileCirclePlus } from "react-icons/fa6";
 import Label from "@/app/_components/Label";
-import deleteIssue from "@/app/_actions/issue/deleteIssue";
 import DeleteButton from "@/app/_components/DeleteButton";
 
 export default async function Page({ params }: { params: { issue_number: number } }) {
@@ -59,24 +56,6 @@ export default async function Page({ params }: { params: { issue_number: number 
             </Button>
             {/* Delete */}
             <DeleteButton number={number} />
-            {/* <form
-              action={async () => {
-                "use server";
-                console.log("delete");
-                await deleteIssue({ issue_number: number });
-              }}
-            >
-              <Button
-                isIconOnly
-                variant="light"
-                color="danger"
-                size="sm"
-                radius="full"
-                type="submit"
-              >
-                <FaRegTrashCan />
-              </Button>
-            </form> */}
           </div>
         </div>
         <div className="flex flex-row flex-wrap gap-1 italic text-slate-400">

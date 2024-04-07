@@ -1,7 +1,6 @@
 "use client";
 
 import MarkdownEditor from "@/app/_components/MarkDownEditor";
-import useIssueMutateCreate from "@/service/issue/useIssueMutateCreate";
 import useIssueMutateUpdate from "@/service/issue/useIssueMutateUpdate";
 import { useSession } from "next-auth/react";
 

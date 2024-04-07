@@ -57,7 +57,6 @@ export default function DeleteButton({ number }: Props) {
             </div>
           ),
         });
-        console.log("on press");
       }}
     >
       <FaRegTrashCan />

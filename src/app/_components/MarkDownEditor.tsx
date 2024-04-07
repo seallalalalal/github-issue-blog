@@ -49,7 +49,6 @@ export default function MarkdownEditor({
   function validateForm() {
     console.log("validate", { formData });
     if (formData.title === "") {
-      console.log("here");
       setInvalidStatus((prev) => ({ ...prev, title: true }));
       return false;
     } else {
