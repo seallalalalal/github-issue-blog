@@ -2,36 +2,79 @@ import { Card, Skeleton } from "@nextui-org/react";
 
 export default function Loading() {
   return (
-    <Card
-      className="w-[200px] space-y-5 p-4"
-      radius="lg"
-    >
-      <Skeleton
-        isLoaded={false}
-        className="rounded-lg"
-      >
-        <div className="h-24 rounded-lg bg-secondary"></div>
-      </Skeleton>
-      <div className="space-y-3">
-        <Skeleton
-          isLoaded={false}
-          className="w-3/5 rounded-lg"
-        >
-          <div className="h-3 w-full rounded-lg bg-secondary"></div>
-        </Skeleton>
-        <Skeleton
-          isLoaded={false}
-          className="w-4/5 rounded-lg"
-        >
-          <div className="h-3 w-full rounded-lg bg-secondary-300"></div>
-        </Skeleton>
-        <Skeleton
-          isLoaded={false}
-          className="w-2/5 rounded-lg"
-        >
-          <div className="h-3 w-full rounded-lg bg-secondary-200"></div>
-        </Skeleton>
+    <>
+      <div className="flex flex-col gap-4">
+        <div className="flex animate-pulse">
+          <div className="flex-shrink-0">
+            <span className="block size-12 rounded-large bg-gray-200"></span>
+          </div>
+
+          <div className="ms-4 mt-2 w-full">
+            <p className="h-4 w-2/5 rounded-full bg-gray-200"></p>
+
+            <ul className="mt-5 space-y-3">
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </Card>
+      <div className="flex flex-col gap-4">
+        <div className="flex animate-pulse">
+          <div className="flex-shrink-0">
+            <span className="block size-12 rounded-large bg-gray-200"></span>
+          </div>
+
+          <div className="ms-4 mt-2 w-full">
+            <p className="h-4 w-2/5 rounded-full bg-gray-200"></p>
+
+            <ul className="mt-5 space-y-3">
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <div className="flex animate-pulse">
+          <div className="flex-shrink-0">
+            <span className="block size-12 rounded-large bg-gray-200"></span>
+          </div>
+
+          <div className="ms-4 mt-2 w-full">
+            <p className="h-4 w-2/5 rounded-full bg-gray-200"></p>
+
+            <ul className="mt-5 space-y-3">
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <div className="flex animate-pulse">
+          <div className="flex-shrink-0">
+            <span className="block size-12 rounded-large bg-gray-200"></span>
+          </div>
+
+          <div className="ms-4 mt-2 w-full">
+            <p className="h-4 w-2/5 rounded-full bg-gray-200"></p>
+
+            <ul className="mt-5 space-y-3">
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+              <li className="h-4 w-full rounded-full bg-gray-200"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
