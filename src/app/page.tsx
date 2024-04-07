@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { handler } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import CustomLayout from "./_components/CustomLayout";
+import { useAccessToken } from "./_components/TokenProvider";
 
 export default async function Home() {
   const session = await getServerSession(handler);

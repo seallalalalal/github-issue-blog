@@ -5,6 +5,8 @@ import useIssueListQuery from "@/service/issue/useIssuListQuery";
 import { Button } from "@nextui-org/react";
 import { useRef } from "react";
 import InfiniteScroll from "./InfiniteScroll";
+import { useAccessToken } from "./TokenProvider";
+import { useSession } from "next-auth/react";
 
 type Props = {
   data?: IssueModel[];
@@ -15,6 +17,9 @@ export default function List({ data: initialData }: Props) {
     page: 1,
     pageSize: 5,
   });
+  const accessToken = useAccessToken();
+  const session = useSession();
+  accessToken.set(session.data?.accessToken);
   return (
     <div className="flex flex-col gap-4">
       {data?.pages.map((d) =>
