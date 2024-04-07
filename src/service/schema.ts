@@ -61,7 +61,8 @@ export const issueList = z.object({
   data: z.array(Issue),
 });
 
+export const IssueArray = z.array(Issue);
+
 export type LabelModel = z.infer<typeof Label>;
 export type UserModel = z.infer<typeof User>;
 export type IssueModel = z.infer<typeof Issue>;
-export type IssueListModel = z.infer<typeof issueList>;
