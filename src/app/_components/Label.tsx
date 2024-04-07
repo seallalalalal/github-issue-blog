@@ -1,4 +1,4 @@
-import { LabelModel } from "@/service/schema";
+import { LabelModel } from "@/tools/schema";
 
 type Props = { label: LabelModel | string };
 export default function Label({ label }: Props) {

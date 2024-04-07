@@ -1,5 +1,5 @@
 import { REPO_NAME, REPO_OWNER } from "@/const/general";
-import { octokitCaller } from "@/service/Octokit";
+import { octokitCaller } from "@/tools/Octokit";
 
 type Props = {
   issue_number: number;

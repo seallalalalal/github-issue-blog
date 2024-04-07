@@ -1,7 +1,7 @@
 "use client";
-import { IssueModel } from "@/service/schema";
+import { IssueModel } from "@/tools/schema";
 import ListTile from "./ListTile";
-import useIssueListQuery from "@/service/issue/useIssuListQuery";
+import useIssueListQuery from "@/app/_hooks/query/useIssuListQuery";
 import { Button } from "@nextui-org/react";
 import { useRef } from "react";
 import InfiniteScroll from "./InfiniteScroll";

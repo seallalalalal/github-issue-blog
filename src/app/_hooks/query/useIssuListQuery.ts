@@ -3,7 +3,7 @@ import { REPO_NAME, REPO_OWNER } from "@/const/general";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import parse from "parse-link-header";
-import { IssueArray } from "../schema";
+import { IssueArray } from "../../../tools/schema";
 import { Octokit } from "octokit";
 
 type Props = {

@@ -2,7 +2,7 @@ import { Card, CardBody, Image, Link, Button, User } from "@nextui-org/react";
 import { FaRegComments, FaGithub } from "react-icons/fa6";
 import DefaultImage from "@/assets/images/album-cover.png";
 import Label from "./Label";
-import { IssueModel } from "@/service/schema";
+import { IssueModel } from "@/tools/schema";
 import { useRouter } from "next/navigation";
 
 type Props = {
