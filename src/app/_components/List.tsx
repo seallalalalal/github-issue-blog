@@ -13,7 +13,7 @@ export default function List({ data: initialData }: Props) {
   const roofRef = useRef<HTMLButtonElement>(null);
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = useIssueListQuery({
     page: 1,
-    pageSize: 10,
+    pageSize: 5,
   });
   return (
     <div className="flex flex-col gap-4">
@@ -27,7 +27,7 @@ export default function List({ data: initialData }: Props) {
       )}
       <InfiniteScroll
         fetchNextPage={() => fetchNextPage()}
-        options={{ root: roofRef.current, rootMargin: "1px", threshold: 1 }}
+        options={{ root: roofRef.current, rootMargin: "10px", threshold: 1 }}
       >
         {(intersectionRef) => (
           <Button
