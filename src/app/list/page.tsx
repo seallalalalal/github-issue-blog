@@ -8,10 +8,15 @@ export default async function Page() {
 
   return (
     <div className="h-full overflow-y-scroll px-1 pb-1">
-      <div className="sticky top-0 z-10 mb-3 flex flex-col gap-1 md:flex-row">
-        <Input placeholder="TODO: 這個功能還沒做好" />
-        <Button>Search</Button>
+      <div className="sticky top-0 z-10 mb-3 grid grid-cols-6 gap-2">
+        <Input
+          placeholder="TODO: 這個功能還沒做好"
+          className="col-span-4"
+        />
+        <Button className="col-span-2 md:col-span-1">Search</Button>
+
         <Button
+          className="col-span-6 md:col-span-1"
           startContent={<FaPlus />}
           color="primary"
           as={Link}

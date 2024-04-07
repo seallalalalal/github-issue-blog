@@ -156,6 +156,8 @@ export default function MarkdownEditor({
                 content: "Please Sign out or Sign In again. Or try it later.",
               });
             }
+          } else {
+            setEditMode(EDITOR_MODE.EDIT);
           }
         }}
       >

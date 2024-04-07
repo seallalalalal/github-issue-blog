@@ -46,8 +46,8 @@ export default function ListTile({ issue }: Props) {
           </div>
 
           <div className="col-span-6 flex flex-col md:col-span-10">
-            <div className="flex items-start justify-between">
-              <div className="flex max-w-full flex-col gap-0">
+            <div className="flex flex-wrap items-start justify-between">
+              <div className="flex min-w-52 max-w-full flex-col gap-0">
                 <User
                   className="flex flex-row justify-start"
                   name={user.login ?? "Author Name"}
@@ -74,7 +74,7 @@ export default function ListTile({ issue }: Props) {
                   </div>
                 </div>
               </div>
-              <div className="flex h-full min-w-40 flex-col items-end justify-between">
+              <div className="flex flex-col justify-between md:items-end">
                 <Button
                   href={html_url}
                   isIconOnly
