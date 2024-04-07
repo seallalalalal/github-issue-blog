@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm"; // Import GitHub-flavored Markdown plugin
-import { useModal } from "./Modal";
+import { useModal } from "../_hooks/context/Modal";
 
 enum EDITOR_MODE {
   PREVIEW = "preview",

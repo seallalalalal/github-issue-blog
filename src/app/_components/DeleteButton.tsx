@@ -2,7 +2,7 @@
 
 import useIssueMutateDelete from "@/service/issue/useIssuemutateDelete";
 import { Button } from "@nextui-org/react";
-import { useModal } from "./Modal";
+import { useModal } from "../_hooks/context/Modal";
 import { useSession } from "next-auth/react";
 import { FaRegTrashCan } from "react-icons/fa6";
 

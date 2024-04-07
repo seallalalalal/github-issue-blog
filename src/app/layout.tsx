@@ -1,12 +1,12 @@
-import SessionProvider from "./_components/SessionProvider";
+import SessionProvider from "./_hooks/context/SessionProvider";
 import { getServerSession } from "next-auth";
-import { NextUIProvider } from "./_components/NextUIProvider";
-import QueryProvider from "./_components/QueryProvider";
+import { NextUIProvider } from "./_hooks/context/NextUIProvider";
+import QueryProvider from "./_hooks/context/QueryProvider";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { handler } from "./api/auth/[...nextauth]/route";
 import NavBar from "./_components/NavBar";
-import { ModalProvider } from "./_components/Modal";
+import { ModalProvider } from "./_hooks/context/Modal";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(handler);
