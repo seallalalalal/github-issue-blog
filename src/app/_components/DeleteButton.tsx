@@ -43,6 +43,12 @@ export default function DeleteButton({ number }: Props) {
                   if (accessToken) {
                     mutate({ token: accessToken, issue_number: number });
                     modal.set({ open: false });
+                  } else {
+                    modal.set({
+                      open: true,
+                      title:
+                        "Access token missing. Please Sign In / Sign Out again. Or try it later.",
+                    });
                   }
                 }}
               >

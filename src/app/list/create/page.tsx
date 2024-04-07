@@ -10,9 +10,7 @@ export default function Page() {
     <>
       <MarkdownEditor
         onMutate={(values) => {
-          if (token) {
-            mutate({ ...values, token });
-          }
+          mutate({ ...values, token });
         }}
         isMutating={isPending}
         btnText="Create"

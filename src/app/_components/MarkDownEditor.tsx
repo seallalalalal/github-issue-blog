@@ -2,9 +2,11 @@
 import useIssueMutateCreate from "@/service/issue/useIssueMutateCreate";
 import { Button, Input, Tab, Tabs, Textarea } from "@nextui-org/react";
 import { UseMutateFunction, UseMutationResult } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import React, { ChangeEventHandler, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm"; // Import GitHub-flavored Markdown plugin
+import { useModal } from "./Modal";
 
 enum EDITOR_MODE {
   PREVIEW = "preview",
@@ -40,6 +42,9 @@ export default function MarkdownEditor({
     body: false,
   });
   const [editMode, setEditMode] = useState<EDITOR_MODE>(EDITOR_MODE.EDIT);
+  const session = useSession();
+  const modal = useModal();
+  const accessToken = session.data?.accessToken;
 
   function validateForm() {
     console.log("validate", { formData });
@@ -146,7 +151,15 @@ export default function MarkdownEditor({
         color="primary"
         onPress={() => {
           if (validateForm()) {
-            onMutate(formData);
+            if (accessToken) {
+              onMutate(formData);
+            } else {
+              modal.set({
+                open: true,
+                title: "Access Token Missing",
+                content: "Please Sign out or Sign In again. Or try it later.",
+              });
+            }
           }
         }}
       >
