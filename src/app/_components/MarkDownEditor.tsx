@@ -97,7 +97,7 @@ export default function MarkdownEditor({
         {/* Edit Tab */}
         <Tab
           key={EDITOR_MODE.EDIT}
-          title="Edit"
+          title="編輯"
           className="h-full"
         >
           <div className="flex h-full w-full flex-col gap-2">
@@ -115,7 +115,7 @@ export default function MarkdownEditor({
         </Tab>
         <Tab
           key={EDITOR_MODE.PREVIEW}
-          title="Preview"
+          title="預覽"
           className="h-full overflow-auto"
         >
           <div className="flex h-full w-full flex-col gap-2">
